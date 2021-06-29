@@ -80,7 +80,7 @@ ermineR = function(annotation = NULL,
                          stop('"annotation" is not a valid file or exists in Pavlidis lab annotations. Use listGemmaAnnotations() to get a list of available annotations.')
                      })
             
-            annotation = annoTemp
+            annotation = R.utils::gunzip(annoTemp)
             
         }
     } else if('data.frame' %in% class(annotation)) {
