@@ -75,12 +75,13 @@ ermineR = function(annotation = NULL,
             annoTemp = tempfile()
             tryCatch(suppressWarnings(getAnnotation(platform = annotation,
                                                     file = annoTemp,
-                                                    annotType = 'noParents')),
+                                                    annotType = 'noParents',
+                                                    unzip = T)),
                      error = function(e){
                          stop('"annotation" is not a valid file or exists in Pavlidis lab annotations. Use listGemmaAnnotations() to get a list of available annotations.')
                      })
             
-            annotation = R.utils::gunzip(annoTemp)
+            annotation = annoTemp
             
         }
     } else if('data.frame' %in% class(annotation)) {
